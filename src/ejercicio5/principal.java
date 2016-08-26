@@ -5,6 +5,8 @@
  */
 package ejercicio5;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
@@ -14,8 +16,16 @@ public class principal extends javax.swing.JFrame {
     /**
      * Creates new form principal
      */
+    double v[];
+
     public principal() {
         initComponents();
+        cmdllenadoautomatico.setEnabled(false);
+        cmdllenadomanual.setEnabled(false);
+        cmdborrar.setEnabled(false);
+        cmdcalcular.setEnabled(false);
+        txtlongitud.requestFocusInWindow();
+        
     }
 
     /**
@@ -44,7 +54,7 @@ public class principal extends javax.swing.JFrame {
         txtresultado1 = new javax.swing.JTextArea();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        txtresultado = new javax.swing.JTextArea();
+        txtresultado3 = new javax.swing.JTextArea();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtresultado2 = new javax.swing.JTextArea();
@@ -64,16 +74,21 @@ public class principal extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Longitud:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, 70, 20));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 70, 20));
 
         txtlongitud.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtlongitudActionPerformed(evt);
             }
         });
-        jPanel3.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 100, -1));
+        txtlongitud.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtlongitudKeyTyped(evt);
+            }
+        });
+        jPanel3.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 130, 30));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 180, 70));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 220, 70));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,9 +126,14 @@ public class principal extends javax.swing.JFrame {
         jPanel4.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, 30));
 
         cmdborrar.setText("Borrar");
+        cmdborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdborrarActionPerformed(evt);
+            }
+        });
         jPanel4.add(cmdborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 140, 30));
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 180, 240));
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 180, 230));
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado vector"));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,21 +143,21 @@ public class principal extends javax.swing.JFrame {
         txtresultado1.setRows(5);
         jScrollPane1.setViewportView(txtresultado1);
 
-        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, 120));
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, 210, 90));
 
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 210, 150));
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 240, 120));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Segunda mitad vector = Sumatoria"));
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtresultado.setEditable(false);
-        txtresultado.setColumns(20);
-        txtresultado.setRows(5);
-        jScrollPane2.setViewportView(txtresultado);
+        txtresultado3.setEditable(false);
+        txtresultado3.setColumns(20);
+        txtresultado3.setRows(5);
+        jScrollPane2.setViewportView(txtresultado3);
 
-        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 90));
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, 90));
 
-        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 210, 130));
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, 220, 130));
 
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Primera mitad vector = Productoria"));
         jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -147,9 +167,9 @@ public class principal extends javax.swing.JFrame {
         txtresultado2.setRows(5);
         jScrollPane3.setViewportView(txtresultado2);
 
-        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 90));
+        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, 90));
 
-        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 210, 130));
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 210, 120));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 430));
 
@@ -164,101 +184,92 @@ public class principal extends javax.swing.JFrame {
 
     private void cmdcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcrearActionPerformed
         int longitud;
-
         if (txtlongitud.getText().trim().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Digite la longitud", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Digite la longitud del vector", "Error", JOptionPane.ERROR_MESSAGE);
             txtlongitud.requestFocusInWindow();
-        } else if (Integer.parseInt(txtlongitud.getText().trim()) == 0) {
-            JOptionPane.showMessageDialog(this, "La longitud digitada es invalida digite una mayor a 0", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (Integer.parseInt(txtlongitud.getText()) == 0) {
+            JOptionPane.showMessageDialog(this, "ingrese una longitud diferente de 0", "Eror", JOptionPane.ERROR_MESSAGE);
             txtlongitud.requestFocusInWindow();
             txtlongitud.selectAll();
         } else {
             longitud = Integer.parseInt(txtlongitud.getText());
             v = new double[longitud];
-            JOptionPane.showMessageDialog(this, "Vector creado correctamente!");
-            cmdcrear.setEnabled(false);
-            cmdllenadomanual.setEnabled(true);
+            JOptionPane.showMessageDialog(this, "Vector creado correctamente");
+            txtlongitud.setEditable(false);
             cmdllenadoautomatico.setEnabled(true);
-            cmdborrar.setEnabled(true);
-            txtlongitud.setEnabled(false);
+            cmdllenadomanual.setEnabled(true);
             cmdcalcular.setEnabled(false);
+            cmdcrear.setEnabled(false);
+            cmdborrar.setEnabled(true);
+
         }
     }//GEN-LAST:event_cmdcrearActionPerformed
 
     private void cmdllenadomanualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdllenadomanualActionPerformed
         double n;
         for (int i = 0; i < v.length; i++) {
-            n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posición: " + i));
+            n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posicion " + (i + 1)));
             v[i] = n;
         }
-        for (int i = 0; i < v.length; i++) {
-            txtresultado2.append(v[i] + "\n");
-        }
-        cmdcrear.setEnabled(false);
         cmdllenadomanual.setEnabled(false);
         cmdllenadoautomatico.setEnabled(false);
-        cmdcalcular.setEnabled(true);
         cmdborrar.setEnabled(true);
-        txtlongitud.setEditable(false);
+        cmdcalcular.setEnabled(true);
+        for (int i = 0; i < v.length; i++) {
+            txtresultado1.append(v[i] + "\n");
+        }
     }//GEN-LAST:event_cmdllenadomanualActionPerformed
 
     private void cmdllenadoautomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdllenadoautomaticoActionPerformed
-        int n;
+        double n;
         for (int i = 0; i < v.length; i++) {
             n = (int) (Math.random() * 25 + 1);
             v[i] = n;
         }
-        for (int i = 0; i < v.length; i++) {
-            txtresultado2.append(v[i] + "\n");
-        }
-
-        JOptionPane.showMessageDialog(this, "Vector creado correctamente");
-        cmdcrear.setEnabled(false);
         cmdllenadomanual.setEnabled(false);
         cmdllenadoautomatico.setEnabled(false);
-        cmdcalcular.setEnabled(true);
         cmdborrar.setEnabled(true);
-        txtlongitud.setEditable(false);
+        cmdcalcular.setEnabled(true);
+        for (int i = 0; i < v.length; i++) {
+            txtresultado1.append(v[i] + "\n");
+        }
+        JOptionPane.showMessageDialog(this, "Vector creado");
     }//GEN-LAST:event_cmdllenadoautomaticoActionPerformed
 
     private void cmdcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcalcularActionPerformed
-        int opc, cpares = 0, cimpar = 0, contd, cprimos = 0;
-        opc = cmboperaciones.getSelectedIndex();
-        switch (opc) {
-            case 0:
-            for (int i = 0; i < v.length; i++) {
-                if (v[i] % 2 == 0) {
-                    cpares = cpares + 1;
-                }
-            }
-            txtresultado1.setText("Los numeros pares son:" + cpares);
-            break;
-
-            case 1:
-            for (int i = 0; i < v.length; i++) {
-                if (v[i] % 2 != 0) {
-                    cimpar = cimpar + 1;
-                }
-            }
-            txtresultado1.setText("Los numeros impares son: " + cimpar);
-            break;
-
-            case 2:
-            for (int i = 0; i < v.length; i++) {
-                contd = 0;
-                for (int j = 1; j <= v[i]; j++) {
-                    if (v[i] % j == 0) {
-                        contd = contd + 1;
-                    }
-                }
-                if (contd == 2) {
-                    cprimos = cprimos + 1;
-                }
-            }
-            txtresultado1.setText("Los numeros primos son: " + cprimos);
-            break;
+        double sumatoria = 0, productoria = 1;
+        for (int i = 0; i < v.length / 2; i++) {
+            productoria = productoria * v[i];
         }
+        txtresultado2.setText("" + productoria);
+        for (int i = (v.length / 2); i < v.length; i++) {
+            sumatoria = sumatoria + v[i];
+        }
+        txtresultado3.setText("" + sumatoria);
     }//GEN-LAST:event_cmdcalcularActionPerformed
+
+    private void txtlongitudKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtlongitudKeyTyped
+        char c = evt.getKeyChar();
+        if (!Character.isDigit(c)) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtlongitudKeyTyped
+
+    private void cmdborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdborrarActionPerformed
+        v = null;
+        txtlongitud.setText("");
+        txtresultado1.setText("");
+        txtresultado2.setText("");
+        txtresultado3.setText("");
+        txtlongitud.requestFocusInWindow();
+        txtlongitud.setEditable(true);
+        cmdcrear.setEnabled(true);
+        cmdllenadomanual.setEnabled(false);
+        cmdllenadoautomatico.setEnabled(false);
+        cmdcalcular.setEnabled(false);
+        cmdborrar.setEnabled(false);
+    }//GEN-LAST:event_cmdborrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,8 +325,8 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField txtlongitud;
-    private javax.swing.JTextArea txtresultado;
     private javax.swing.JTextArea txtresultado1;
     private javax.swing.JTextArea txtresultado2;
+    private javax.swing.JTextArea txtresultado3;
     // End of variables declaration//GEN-END:variables
 }
