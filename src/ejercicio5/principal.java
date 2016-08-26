@@ -31,6 +31,23 @@ public class principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtlongitud = new javax.swing.JTextField();
+        jPanel4 = new javax.swing.JPanel();
+        cmdcrear = new javax.swing.JButton();
+        cmdllenadomanual = new javax.swing.JButton();
+        cmdllenadoautomatico = new javax.swing.JButton();
+        cmdcalcular = new javax.swing.JButton();
+        cmdborrar = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtresultado1 = new javax.swing.JTextArea();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtresultado = new javax.swing.JTextArea();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtresultado2 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -41,29 +58,207 @@ public class principal extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel1.setText("PRODUCTORIA Y SUMATORIA DE LA MITAD DEL VECTOR");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 330, 40));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 330, 40));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos iniciales Vector"));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 168, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 107, Short.MAX_VALUE)
-        );
+        jLabel2.setText("Longitud:");
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 32, 70, 20));
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 180, 130));
+        txtlongitud.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtlongitudActionPerformed(evt);
+            }
+        });
+        jPanel3.add(txtlongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 100, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 380));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 180, 70));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 510, 380));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones"));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        cmdcrear.setText("Crear");
+        cmdcrear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdcrearActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdcrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 30));
+
+        cmdllenadomanual.setText("Llenado Manual");
+        cmdllenadomanual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdllenadomanualActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdllenadomanual, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 140, 30));
+
+        cmdllenadoautomatico.setText("Llenado Automatico");
+        cmdllenadoautomatico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdllenadoautomaticoActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdllenadoautomatico, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 140, 30));
+
+        cmdcalcular.setText("Calcular");
+        cmdcalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdcalcularActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cmdcalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 140, 30));
+
+        cmdborrar.setText("Borrar");
+        jPanel4.add(cmdborrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 140, 30));
+
+        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, 180, 240));
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultado vector"));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtresultado1.setEditable(false);
+        txtresultado1.setColumns(20);
+        txtresultado1.setRows(5);
+        jScrollPane1.setViewportView(txtresultado1);
+
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 16, -1, 120));
+
+        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 210, 150));
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Segunda mitad vector = Sumatoria"));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtresultado.setEditable(false);
+        txtresultado.setColumns(20);
+        txtresultado.setRows(5);
+        jScrollPane2.setViewportView(txtresultado);
+
+        jPanel6.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 90));
+
+        jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 210, 130));
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Primera mitad vector = Productoria"));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtresultado2.setEditable(false);
+        txtresultado2.setColumns(20);
+        txtresultado2.setRows(5);
+        jScrollPane3.setViewportView(txtresultado2);
+
+        jPanel7.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 170, 90));
+
+        jPanel2.add(jPanel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 210, 130));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 430));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 430));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtlongitudActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtlongitudActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtlongitudActionPerformed
+
+    private void cmdcrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcrearActionPerformed
+        int longitud;
+
+        if (txtlongitud.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Digite la longitud", "Error", JOptionPane.ERROR_MESSAGE);
+            txtlongitud.requestFocusInWindow();
+        } else if (Integer.parseInt(txtlongitud.getText().trim()) == 0) {
+            JOptionPane.showMessageDialog(this, "La longitud digitada es invalida digite una mayor a 0", "Error", JOptionPane.ERROR_MESSAGE);
+            txtlongitud.requestFocusInWindow();
+            txtlongitud.selectAll();
+        } else {
+            longitud = Integer.parseInt(txtlongitud.getText());
+            v = new double[longitud];
+            JOptionPane.showMessageDialog(this, "Vector creado correctamente!");
+            cmdcrear.setEnabled(false);
+            cmdllenadomanual.setEnabled(true);
+            cmdllenadoautomatico.setEnabled(true);
+            cmdborrar.setEnabled(true);
+            txtlongitud.setEnabled(false);
+            cmdcalcular.setEnabled(false);
+        }
+    }//GEN-LAST:event_cmdcrearActionPerformed
+
+    private void cmdllenadomanualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdllenadomanualActionPerformed
+        double n;
+        for (int i = 0; i < v.length; i++) {
+            n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento en la posición: " + i));
+            v[i] = n;
+        }
+        for (int i = 0; i < v.length; i++) {
+            txtresultado2.append(v[i] + "\n");
+        }
+        cmdcrear.setEnabled(false);
+        cmdllenadomanual.setEnabled(false);
+        cmdllenadoautomatico.setEnabled(false);
+        cmdcalcular.setEnabled(true);
+        cmdborrar.setEnabled(true);
+        txtlongitud.setEditable(false);
+    }//GEN-LAST:event_cmdllenadomanualActionPerformed
+
+    private void cmdllenadoautomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdllenadoautomaticoActionPerformed
+        int n;
+        for (int i = 0; i < v.length; i++) {
+            n = (int) (Math.random() * 25 + 1);
+            v[i] = n;
+        }
+        for (int i = 0; i < v.length; i++) {
+            txtresultado2.append(v[i] + "\n");
+        }
+
+        JOptionPane.showMessageDialog(this, "Vector creado correctamente");
+        cmdcrear.setEnabled(false);
+        cmdllenadomanual.setEnabled(false);
+        cmdllenadoautomatico.setEnabled(false);
+        cmdcalcular.setEnabled(true);
+        cmdborrar.setEnabled(true);
+        txtlongitud.setEditable(false);
+    }//GEN-LAST:event_cmdllenadoautomaticoActionPerformed
+
+    private void cmdcalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdcalcularActionPerformed
+        int opc, cpares = 0, cimpar = 0, contd, cprimos = 0;
+        opc = cmboperaciones.getSelectedIndex();
+        switch (opc) {
+            case 0:
+            for (int i = 0; i < v.length; i++) {
+                if (v[i] % 2 == 0) {
+                    cpares = cpares + 1;
+                }
+            }
+            txtresultado1.setText("Los numeros pares son:" + cpares);
+            break;
+
+            case 1:
+            for (int i = 0; i < v.length; i++) {
+                if (v[i] % 2 != 0) {
+                    cimpar = cimpar + 1;
+                }
+            }
+            txtresultado1.setText("Los numeros impares son: " + cimpar);
+            break;
+
+            case 2:
+            for (int i = 0; i < v.length; i++) {
+                contd = 0;
+                for (int j = 1; j <= v[i]; j++) {
+                    if (v[i] % j == 0) {
+                        contd = contd + 1;
+                    }
+                }
+                if (contd == 2) {
+                    cprimos = cprimos + 1;
+                }
+            }
+            txtresultado1.setText("Los numeros primos son: " + cprimos);
+            break;
+        }
+    }//GEN-LAST:event_cmdcalcularActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,9 +296,26 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cmdborrar;
+    private javax.swing.JButton cmdcalcular;
+    private javax.swing.JButton cmdcrear;
+    private javax.swing.JButton cmdllenadoautomatico;
+    private javax.swing.JButton cmdllenadomanual;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextField txtlongitud;
+    private javax.swing.JTextArea txtresultado;
+    private javax.swing.JTextArea txtresultado1;
+    private javax.swing.JTextArea txtresultado2;
     // End of variables declaration//GEN-END:variables
 }
